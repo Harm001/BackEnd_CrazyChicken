@@ -15,7 +15,7 @@ var dbName = Environment.GetEnvironmentVariable("DB_NAME");
 var dbPassword = Environment.GetEnvironmentVariable("DB_HOST");
 
 builder.Services.AddDbContext<AppDBContent>(options =>
-                options.UseSqlServer($"Server={dbHost};Database={dbName};User Id=mysql;Password={dbPassword};"));
+                options.UseSqlServer($"Data Source={dbHost};Initial Catalogue={dbName};User ID=mssql;Password={dbPassword};"));
 
 builder.Services.AddTransient<IAuction, AuctionRepositiry>();
 builder.Services.AddTransient<IComments, CommentRepository>();
