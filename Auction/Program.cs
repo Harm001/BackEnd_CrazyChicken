@@ -12,7 +12,7 @@ builder.Configuration.AddJsonFile("appsettings.json");
 
 var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
 var dbName = Environment.GetEnvironmentVariable("DB_NAME");
-var dbPassword = Environment.GetEnvironmentVariable("DB_HOST");
+var dbPassword = Environment.GetEnvironmentVariable("MSSQL_SA_PASSWORD");
 
 builder.Services.AddDbContext<AppDBContent>(options =>
                 options.UseSqlServer($"Data Source={dbHost};Initial Catalogue={dbName};User ID=mssql;Password={dbPassword};"));
