@@ -10,6 +10,6 @@ namespace Auction_TestTaskCrazyChicken.Models
         public int price { get; set; }
         public string description { get; set; }
         public string img { get; set; }
-        //public ICollection<Comment> Comments { get; set; }
+        public ICollection<Comment> Comments { get; set; }
     }
 }
