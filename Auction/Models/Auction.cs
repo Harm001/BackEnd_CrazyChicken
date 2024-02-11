@@ -15,7 +15,6 @@ namespace Auction_TestTaskCrazyChicken.Models
             this.price = price;
             this.description = description;
             this.img = img;
-            Comments = comments;
         }
 
         public int id { get; set; }
