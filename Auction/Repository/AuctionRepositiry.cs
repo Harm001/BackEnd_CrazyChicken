@@ -32,6 +32,12 @@ namespace Auction_TestTaskCrazyChicken.Repository
             await appDBContent.SaveChangesAsync();
         }
 
+        public void UpdateAuction(Auction auction)
+        {
+            appDBContent.Entry(auction).State = EntityState.Modified;
+            appDBContent.SaveChanges();
+        }
+
 
     }
 }

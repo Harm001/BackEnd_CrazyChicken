@@ -43,7 +43,7 @@ namespace Auction_TestTaskCrazyChicken
                         nameOfCommentator = "Oleg",
                         time = DateTime.Now,
                         text = "Good samsa",
-                        AuctionId = 1
+                        AuctionId = 2
                     },
                     new Comment
                     {
