@@ -2,14 +2,15 @@
 {
     public class Auction
     {
-        public Auction(int idLot, string name, string description, int lastBid, DateTime startDate, int timerCount)
+        public Auction(int idLot, string name, string description, int lastBid, DateTime startDate, int timerCount, string img)
         {
-            this.idLot = idLot;
+            this.id = idLot;
             this.name = name;
             this.description = description;
-            this.lastBid = lastBid;
+            this.price = lastBid;
             this.startDate = startDate;
             this.timerCount = timerCount;
+            this.img = img;
         }
 
         /*
@@ -21,12 +22,13 @@ let lastBid = items?.price;
  let description = items?.description;
 */
 
-        public int idLot { get; set; }
+        public int id { get; set; }
         public string name { get; set; }
         public string description {  get; set; }
-        public int lastBid { get; set; }
+        public int price { get; set; }
         public DateTime startDate { get; set; }
         public int timerCount { get; set; }
+        public string img { get; set; }
 
 
     }

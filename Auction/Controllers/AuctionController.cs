@@ -35,7 +35,7 @@ namespace Auction_TestTaskCrazyChicken.Controllers
                 var additionalData = JsonConvert.DeserializeObject<AuctionAdditionalData>(auction.name);
                 if (additionalData == null) return BadRequest();
 
-                var auctionForFront = new Auction(auction.id, additionalData.name, auction.description, auction.price, additionalData.createdDate, additionalData.timerCount);
+                var auctionForFront = new Auction(auction.id, additionalData.name, auction.description, auction.price, additionalData.createdDate, additionalData.timerCount,auction.img);
 
                 auctions.Add(auctionForFront);
             }
@@ -58,7 +58,7 @@ namespace Auction_TestTaskCrazyChicken.Controllers
                 var additionalData = JsonConvert.DeserializeObject<AuctionAdditionalData>(auction.name);
                 if (additionalData == null) return BadRequest();
 
-                var auctionForFront = new Auction(auction.id, additionalData.name, auction.description, auction.price, additionalData.createdDate, additionalData.timerCount);
+                var auctionForFront = new Auction(auction.id, additionalData.name, auction.description, auction.price, additionalData.createdDate, additionalData.timerCount, auction.img);
 
                 return Ok(JsonConvert.SerializeObject(auctionForFront));
             }
