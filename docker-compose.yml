@@ -25,7 +25,7 @@ services:
        - auctiondb
     environment:
        - DB_HOST=auctiondb
-       - DB_NAME=sql1
+       - DB_NAME=sql2
        - DB_SA_PASSWORD=pass12345#
     networks:
        - auctionapp
