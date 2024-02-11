@@ -59,7 +59,7 @@ namespace Auction_TestTaskCrazyChicken.Controllers
         }
 
         [HttpPost("newComment/{id}")]
-        public async Task<IActionResult> AddComment([FromBody] NewCommentPostModel newComment, int id)
+        public async Task<IActionResult> AddComment([FromBody] NewCommentPostModel newComment, [FromRoute] int id)
         {
             var auction = _auctionRepository.GetObjectAuction(id);
             if (auction == null)

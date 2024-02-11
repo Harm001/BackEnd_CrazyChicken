@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Auction_TestTaskCrazyChicken.Migrations
 {
     [DbContext(typeof(AppDBContent))]
-    [Migration("20240210155650_Initial")]
+    [Migration("20240211220639_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -33,6 +33,12 @@ namespace Auction_TestTaskCrazyChicken.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("description")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -44,6 +50,9 @@ namespace Auction_TestTaskCrazyChicken.Migrations
                     b.Property<string>("name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("number")
+                        .HasColumnType("int");
 
                     b.Property<int>("price")
                         .HasColumnType("int");
@@ -61,12 +70,15 @@ namespace Auction_TestTaskCrazyChicken.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"));
 
-                    b.Property<int>("AuctionIdid")
+                    b.Property<int>("AuctionId")
                         .HasColumnType("int");
 
                     b.Property<string>("nameOfCommentator")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("number")
+                        .HasColumnType("int");
 
                     b.Property<string>("text")
                         .IsRequired()
@@ -77,20 +89,25 @@ namespace Auction_TestTaskCrazyChicken.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("AuctionIdid");
+                    b.HasIndex("AuctionId");
 
                     b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("Auction_TestTaskCrazyChicken.Models.Comment", b =>
                 {
-                    b.HasOne("Auction_TestTaskCrazyChicken.Models.Auction", "AuctionId")
-                        .WithMany()
-                        .HasForeignKey("AuctionIdid")
+                    b.HasOne("Auction_TestTaskCrazyChicken.Models.Auction", "Auction")
+                        .WithMany("Comments")
+                        .HasForeignKey("AuctionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("AuctionId");
+                    b.Navigation("Auction");
+                });
+
+            modelBuilder.Entity("Auction_TestTaskCrazyChicken.Models.Auction", b =>
+                {
+                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }

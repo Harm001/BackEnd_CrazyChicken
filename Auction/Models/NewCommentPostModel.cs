@@ -4,7 +4,6 @@
     {
         public string name { get; set; }
         public string surname { get; set; }
-        public int phone { get; set; }
         public string desc { get; set; }
     }
 }
