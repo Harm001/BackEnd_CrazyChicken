@@ -10,7 +10,7 @@ services:
       - 8002:1433
     environment:
       - ACCEPT_EULA=Y
-      - MSSQL_SA_PASSWORD=password@12345#
+      - MSSQL_SA_PASSWORD=pass12345#
     networks:
       - auctionapp
 
@@ -26,6 +26,6 @@ services:
     environment:
        - DB_HOST=auctiondb
        - DB_NAME=sql1
-       - DB_SA_PASSWORD=password@12345#
+       - DB_SA_PASSWORD=pass12345#
     networks:
        - auctionapp
