@@ -24,7 +24,7 @@ services:
     depends_on:
        - auctiondb
     environment:
-       - DB_HOST=sql1
+       - DB_HOST=auctiondb
        - DB_NAME=sql1
        - DB_SA_PASSWORD=123123123
     networks:
