@@ -9,5 +9,6 @@ namespace Auction_TestTaskCrazyChicken.Interface
         Auction GetObjectAuction(int auctionId);
         void AddAuction(Auction auction);
         Task AddComment(Comment comment);
+        public void UpdateAuction(Auction auction);
     }
 }

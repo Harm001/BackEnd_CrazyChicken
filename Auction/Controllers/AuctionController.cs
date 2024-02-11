@@ -44,19 +44,24 @@ namespace Auction_TestTaskCrazyChicken.Controllers
 
             return Ok(auction);
         }
-        // POST: /Auction
-        [HttpPost]
-        public IActionResult AddAuction([FromBody][Bind("id,name,price,discription,img")] Auction auction)
+        [HttpPost("GetId/{id}")]
+        public IActionResult GetId (int id)
         {
-                _auctionRepository.AddAuction(auction);
-                return Ok(auction);
-            
+            return Ok(id);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> AddComment([FromBody] Comment comment)
+        // POST: /Auction
+        [HttpPost("Add")]
+        public IActionResult AddAuction([FromBody][Bind("id,name,price,discription,img")] Auction auction)
         {
-            var auction =  _auctionRepository.GetObjectAuction(comment.AuctionId);
+             _auctionRepository.AddAuction(auction);
+             return Ok(auction);
+        }
+
+        [HttpPost("{id}/Comment")]
+        public async Task<IActionResult> AddComment([FromBody][Bind("id,nameOfCommentator,text,AuctionId")] Comment comment)
+        {
+            var auction = _auctionRepository.GetObjectAuction(comment.AuctionId);
             if (auction == null)
             {
                 return NotFound();
@@ -71,6 +76,19 @@ namespace Auction_TestTaskCrazyChicken.Controllers
             return Ok(auction);
         }
 
+        [HttpPost("UpdatePrice/{id}")]
+        public IActionResult UpDatePrice(int id, [FromBody] int newPrice)
+        {
+            var auction = _auctionRepository.GetObjectAuction(id);
 
+            if (auction == null)
+            {
+                return NotFound();
+            }
+
+            auction.price = newPrice;
+            _auctionRepository.UpdateAuction(auction);
+            return Ok(auction);
+        }
     }
 }
