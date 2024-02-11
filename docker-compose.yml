@@ -27,5 +27,6 @@ services:
        - DB_HOST=auctiondb
        - DB_NAME=sql1
        - DB_SA_PASSWORD=pass12345#
+       - ASPNETCORE_URLS=http://+:5073
     networks:
        - auctionapp
