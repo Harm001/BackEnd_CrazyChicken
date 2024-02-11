@@ -16,6 +16,9 @@ namespace Auction_TestTaskCrazyChicken
                     {
                         name = "Test",
                         description = "Bayraktar chinazes",
+                        number = 123456789,
+                        StartTime = DateTime.Now,
+                        EndTime = DateTime.Now.AddDays(6),
                         price = 10,
                         img = "/img/Bayraktar.jpg"
                     },
@@ -23,6 +26,9 @@ namespace Auction_TestTaskCrazyChicken
                     {
                         name = "Test2",
                         description = "Samsa vkesnaia",
+                        number = 576894376,
+                        StartTime = DateTime.Now,
+                        EndTime = DateTime.Now.AddDays(5),
                         price = 10,
                         img = "/img/samsa.jpg"
                     }
@@ -43,6 +49,7 @@ namespace Auction_TestTaskCrazyChicken
                         nameOfCommentator = "Oleg",
                         time = DateTime.Now,
                         text = "Good samsa",
+                        number = 987654321,
                         AuctionId = 2
                     },
                     new Comment
@@ -50,12 +57,14 @@ namespace Auction_TestTaskCrazyChicken
                         nameOfCommentator = "Mahmet",
                         time = DateTime.Now,
                         text = "Otrawilsa, samsa ne och",
+                        number = 49376489,
                         AuctionId = 2
                     },
                     new Comment
                     {
                         nameOfCommentator = "Jack",
                         time = DateTime.Now,
+                        number = 174563968,
                         text = "Bom Bom",
                         AuctionId = 1
                     },
@@ -63,6 +72,7 @@ namespace Auction_TestTaskCrazyChicken
                     {
                         nameOfCommentator = "Mitia",
                         time = DateTime.Now,
+                        number = 20958476,
                         text = "Kasha",
                         AuctionId = 1
                     }
