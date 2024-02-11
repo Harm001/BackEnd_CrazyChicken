@@ -52,9 +52,9 @@ namespace Auction_TestTaskCrazyChicken.Controllers
 
         // POST: /Auction
         [HttpPost("Add")]
-        public IActionResult AddAuction([FromBody][Bind("id,name,price,discription,img")] Auction auction)
+        public IActionResult AddAuction([FromBody] newAuctionPostModel auction)
         {
-             _auctionRepository.AddAuction(auction);
+             _auctionRepository.AddAuction(new Auction(auction.name,auction.price, auction.description, auction.img));
              return Ok(auction);
         }
 
