@@ -71,7 +71,7 @@ namespace Auction_TestTaskCrazyChicken.Controllers
 
             _auctionRepository.AddComment(comment);
 
-            //auction =  _auctionRepository.GetObjectAuction(comment.AuctionId);
+            auction =  _auctionRepository.GetObjectAuction(comment.AuctionId);
 
             return Ok(auction);
         }
