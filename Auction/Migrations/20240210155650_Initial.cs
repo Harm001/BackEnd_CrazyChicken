@@ -11,7 +11,8 @@ namespace Auction_TestTaskCrazyChicken.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
+            /*
+             migrationBuilder.CreateTable(
                 name: "Auctions",
                 columns: table => new
                 {
@@ -53,16 +54,19 @@ namespace Auction_TestTaskCrazyChicken.Migrations
                 name: "IX_Comments_AuctionIdid",
                 table: "Comments",
                 column: "AuctionIdid");
+             */
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
+            /*
+             * migrationBuilder.DropTable(
                 name: "Comments");
 
             migrationBuilder.DropTable(
                 name: "Auctions");
+             */
         }
     }
 }
