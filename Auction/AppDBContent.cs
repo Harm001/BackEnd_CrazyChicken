@@ -8,7 +8,8 @@ namespace Auction_TestTaskCrazyChicken_TestTaskCrazyChicken
     {
         public AppDBContent(DbContextOptions<AppDBContent> options) : base(options)
         {
-
+            Database.EnsureDeleted();
+            Database.EnsureCreated();
         }
 
         public DbSet<Auction> Auctions { get; set; }
