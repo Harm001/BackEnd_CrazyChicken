@@ -3,7 +3,8 @@
     public class NewCommentPostModel
     {
         public string name { get; set; }
-        public int number { get; set; }
+        public string surname { get; set; }
+        public int phone { get; set; }
         public string desc { get; set; }
     }
 }

@@ -70,7 +70,7 @@ namespace Auction_TestTaskCrazyChicken.Controllers
             comment.AuctionId = id;
             comment.text = newComment.desc;
             comment.time = DateTime.Now;
-            comment.nameOfCommentator = newComment.name;
+            comment.nameOfCommentator = newComment.name + " " + newComment.surname;
 
 
             await _auctionRepository.AddComment(comment);
