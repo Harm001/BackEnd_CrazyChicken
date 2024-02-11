@@ -15,7 +15,7 @@ var dbName = Environment.GetEnvironmentVariable("DB_NAME");
 var dbPassword = Environment.GetEnvironmentVariable("MSSQL_SA_PASSWORD");
 
 builder.Services.AddDbContext<AppDBContent>(options =>
-                options.UseSqlServer($"Data Source={dbHost}; Initial Catalog={dbName}; User ID = sa; Password = {dbPassword};TrustServerCertificate=true"));
+                options.UseSqlServer($"Data Source={dbHost}; Initial Catalog={dbName}; User ID = SA; Password = pass12345#;TrustServerCertificate=true"));
 
 builder.Services.AddTransient<IAuction, AuctionRepositiry>();
 builder.Services.AddTransient<IComments, CommentRepository>();
