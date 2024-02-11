@@ -8,7 +8,6 @@ namespace Auction_TestTaskCrazyChicken.Models
         public DateTime time { get; set; }
         public string nameOfCommentator { get; set; }
         public string text { get; set; }
-        public int number { get; set; }
         public int AuctionId { get; set; }
         [JsonIgnore]
         public Auction Auction { get; set; }
