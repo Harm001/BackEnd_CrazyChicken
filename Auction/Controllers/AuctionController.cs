@@ -95,16 +95,14 @@ namespace Auction_TestTaskCrazyChicken.Controllers
         }
 
         [HttpPost("UpdatePrice/{id}")]
-        public IActionResult UpDatePrice(int id, [FromBody] int newPrice)
+        public IActionResult UpDatePrice([FromRoute] int id, [FromBody] updatePricePostModel newPrice)
         {
             var auction = _auctionRepository.GetObjectAuction(id);
-
             if (auction == null)
             {
                 return NotFound();
             }
-
-            auction.price = newPrice;
+            auction.price = newPrice.newPrice;
             _auctionRepository.UpdateAuction(auction);
             return Ok(auction);
         }
