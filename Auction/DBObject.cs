@@ -43,28 +43,28 @@ namespace Auction_TestTaskCrazyChicken
                         nameOfCommentator = "Oleg",
                         time = DateTime.Now,
                         text = "Good samsa",
-                        AuctionId = context.Auctions.FirstOrDefault(a => a.name == "Test2")
+                        AuctionId = 1
                     },
                     new Comment
                     {
                         nameOfCommentator = "Mahmet",
                         time = DateTime.Now,
                         text = "Otrawilsa, samsa ne och",
-                        AuctionId = context.Auctions.FirstOrDefault(a => a.name == "Test2")
+                        AuctionId = 2
                     },
                     new Comment
                     {
                         nameOfCommentator = "Jack",
                         time = DateTime.Now,
                         text = "Bom Bom",
-                        AuctionId = context.Auctions.FirstOrDefault(a => a.name == "Test")
+                        AuctionId = 1
                     },
                     new Comment
                     {
                         nameOfCommentator = "Mitia",
                         time = DateTime.Now,
                         text = "Kasha",
-                        AuctionId = context.Auctions.FirstOrDefault(a => a.name == "Test")
+                        AuctionId = 1
                     }
                 };
                 context.Comments.AddRange(comments);

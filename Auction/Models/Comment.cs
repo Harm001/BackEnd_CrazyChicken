@@ -1,4 +1,6 @@
-﻿namespace Auction_TestTaskCrazyChicken.Models
+﻿using System.Text.Json.Serialization;
+
+namespace Auction_TestTaskCrazyChicken.Models
 {
     public class Comment
     {
@@ -6,6 +8,8 @@
         public DateTime time { get; set; }
         public string nameOfCommentator { get; set; }
         public string text { get; set; }
-        public Auction AuctionId { get; set; }
+        public int AuctionId { get; set; }
+        [JsonIgnore]
+        public Auction Auction { get; set; }
     }
 }

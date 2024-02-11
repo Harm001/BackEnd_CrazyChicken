@@ -1,6 +1,7 @@
 ﻿using Auction_TestTaskCrazyChicken.Interface;
 using Auction_TestTaskCrazyChicken.Models;
 using Auction_TestTaskCrazyChicken_TestTaskCrazyChicken;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Runtime.InteropServices;
 
@@ -20,6 +21,17 @@ namespace Auction_TestTaskCrazyChicken.Repository
                 .Include(a => a.Comments)
                 .FirstOrDefault(p => p.id == auctionId);
         }
+        public void AddAuction(Auction auction)
+        {
+            appDBContent.Auctions.Add(auction);
+            appDBContent.SaveChanges();
+        }
+        public async Task AddComment(Comment comment)
+        {
+            await appDBContent.Comments.AddAsync(comment);
+            await appDBContent.SaveChangesAsync();
+        }
+
 
     }
 }

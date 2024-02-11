@@ -50,5 +50,6 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
     var content = services.GetRequiredService<AppDBContent>();
     DBObject.Initial(content);
+    content.SaveChanges();
 }
 app.Run();
