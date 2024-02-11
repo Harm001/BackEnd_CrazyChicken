@@ -26,7 +26,19 @@ namespace Auction_TestTaskCrazyChicken.Controllers
         [HttpGet]
         public IActionResult GetAllAuctions()
         {
-            var auctions = _auctionRepository.AllAuctions;
+            var auctionsContexts = _auctionRepository.AllAuctions;
+
+            var auctions = new List<Auction>();
+
+            foreach(var auction in auctionsContexts)
+            {
+                var additionalData = JsonConvert.DeserializeObject<AuctionAdditionalData>(auction.name);
+                if (additionalData == null) return BadRequest();
+
+                var auctionForFront = new Auction(auction.id, additionalData.name, auction.description, auction.price, additionalData.createdDate, additionalData.timerCount);
+
+                auctions.Add(auctionForFront);
+            }
 
             return Ok(auctions);
         }
@@ -35,18 +47,25 @@ namespace Auction_TestTaskCrazyChicken.Controllers
         [HttpGet("{id}")]
         public IActionResult GetAuctionById(int id)
         {
-            var auction = _auctionRepository.GetObjectAuction(id);
-
-            if (auction == null)
+            try
             {
-                return NotFound();
+                var auction = _auctionRepository.GetObjectAuction(id);
+
+                if (auction == null)
+                {
+                    return NotFound();
+                }
+                var additionalData = JsonConvert.DeserializeObject<AuctionAdditionalData>(auction.name);
+                if (additionalData == null) return BadRequest();
+
+                var auctionForFront = new Auction(auction.id, additionalData.name, auction.description, auction.price, additionalData.createdDate, additionalData.timerCount);
+
+                return Ok(JsonConvert.SerializeObject(auctionForFront));
             }
-            var additionalData = JsonConvert.DeserializeObject<AuctionAdditionalData>(auction.name);
-            if (additionalData == null) return BadRequest();
-
-            var auctionForFront = new Auction(auction.id,additionalData.name,auction.description,auction.price,additionalData.createdDate,additionalData.timerCount);
-
-            return Ok(JsonConvert.SerializeObject(auctionForFront));
+            catch(Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
         [HttpPost("GetId/{id}")]
         public IActionResult GetId (int id)
