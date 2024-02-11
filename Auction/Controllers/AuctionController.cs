@@ -58,6 +58,14 @@ namespace Auction_TestTaskCrazyChicken.Controllers
              return Ok(auction);
         }
 
+        [HttpGet("getcomments/{id}")]
+        public async Task<IActionResult> GetCommentById([FromRoute] int id)
+        {
+            var auction = _auctionRepository.GetObjectAuction(id);
+
+            return Ok(JsonConvert.SerializeObject(auction.Comments));
+        }
+
         [HttpPost("newComment/{id}")]
         public async Task<IActionResult> AddComment([FromBody] NewCommentPostModel newComment, [FromRoute] int id)
         {
