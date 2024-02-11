@@ -43,7 +43,7 @@ if (app.Environment.IsDevelopment())
 app.UseStaticFiles();
 
 app.UseRouting();
-app.UseAuthorization();
+
 app.UseCors(options =>
 {
     options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
