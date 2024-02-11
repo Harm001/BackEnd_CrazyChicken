@@ -58,22 +58,24 @@ namespace Auction_TestTaskCrazyChicken.Controllers
              return Ok(auction);
         }
 
-        [HttpPost("{id}/Comment")]
-        public async Task<IActionResult> AddComment([FromBody][Bind("id,nameOfCommentator,text,AuctionId")] Comment comment)
+        [HttpPost("newComment/{id}")]
+        public async Task<IActionResult> AddComment([FromBody] NewCommentPostModel newComment, int id)
         {
-            var auction = _auctionRepository.GetObjectAuction(comment.AuctionId);
+            var auction = _auctionRepository.GetObjectAuction(id);
             if (auction == null)
             {
                 return NotFound();
             }
-
+            Comment comment = new Comment();
+            comment.AuctionId = id;
+            comment.text = newComment.desc;
             comment.time = DateTime.Now;
+            comment.nameOfCommentator = newComment.name;
 
-            _auctionRepository.AddComment(comment);
 
-            auction =  _auctionRepository.GetObjectAuction(comment.AuctionId);
+            await _auctionRepository.AddComment(comment);
 
-            return Ok(auction);
+            return Ok();
         }
 
         [HttpPost("UpdatePrice/{id}")]
