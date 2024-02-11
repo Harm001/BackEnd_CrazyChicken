@@ -5,10 +5,10 @@ namespace Auction_TestTaskCrazyChicken.Interface
 {
     public interface IAuction
     {
-        IEnumerable<Auction> AllAuctions {  get; }
-        Auction GetObjectAuction(int auctionId);
-        void AddAuction(Auction auction);
+        IEnumerable<AuctionContext> AllAuctions {  get; }
+        AuctionContext GetObjectAuction(int auctionId);
+        void AddAuction(AuctionContext auction);
         Task AddComment(Comment comment);
-        public void UpdateAuction(Auction auction);
+        public void UpdateAuction(AuctionContext auction);
     }
 }

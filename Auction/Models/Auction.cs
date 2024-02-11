@@ -1,29 +1,33 @@
-﻿using Newtonsoft.Json;
-using System.Runtime.InteropServices;
-
-namespace Auction_TestTaskCrazyChicken.Models
+﻿namespace Auction_TestTaskCrazyChicken.Models
 {
     public class Auction
     {
-        public Auction()
+        public Auction(int idLot, string name, string description, int lastBid, DateTime startDate, int timerCount)
         {
-        }
-
-        public Auction(string name, int price, string description, string img)
-        {
+            this.idLot = idLot;
             this.name = name;
-            this.price = price;
             this.description = description;
-            this.img = img;
+            this.lastBid = lastBid;
+            this.startDate = startDate;
+            this.timerCount = timerCount;
         }
 
-        public int id { get; set; }
+        /*
+let lastBid = items?.price;
+ let timerCount = items?.timerCount;
+ let idLot = id;
+ let startDate = items?.date;
+ let lotName = items?.name;
+ let description = items?.description;
+*/
+
+        public int idLot { get; set; }
         public string name { get; set; }
-        public int price { get; set; }
-        public string description { get; set; }
-        public string img { get; set; }
-        [JsonIgnore]
-        public List<Comment> Comments { get; set; }
+        public string description {  get; set; }
+        public int lastBid { get; set; }
+        public DateTime startDate { get; set; }
+        public int timerCount { get; set; }
+
 
     }
 }

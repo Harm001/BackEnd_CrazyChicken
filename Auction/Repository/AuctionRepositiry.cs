@@ -14,14 +14,14 @@ namespace Auction_TestTaskCrazyChicken.Repository
         {
             this.appDBContent = appDBContent;
         }
-        public IEnumerable<Auction> AllAuctions => appDBContent.Auctions;
-        public Auction GetObjectAuction(int auctionId)
+        public IEnumerable<AuctionContext> AllAuctions => appDBContent.Auctions;
+        public AuctionContext GetObjectAuction(int auctionId)
         {
             return appDBContent.Auctions
                 .Include(a => a.Comments)
                 .FirstOrDefault(p => p.id == auctionId);
         }
-        public void AddAuction(Auction auction)
+        public void AddAuction(AuctionContext auction)
         {
             appDBContent.Auctions.Add(auction);
             appDBContent.SaveChanges();
@@ -32,7 +32,7 @@ namespace Auction_TestTaskCrazyChicken.Repository
             await appDBContent.SaveChangesAsync();
         }
 
-        public void UpdateAuction(Auction auction)
+        public void UpdateAuction(AuctionContext auction)
         {
             appDBContent.Entry(auction).State = EntityState.Modified;
             appDBContent.SaveChanges();

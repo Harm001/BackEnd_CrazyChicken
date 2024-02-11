@@ -35,7 +35,7 @@ namespace Auction_TestTaskCrazyChicken.Controllers
         }
 
         [HttpPost("Add")]
-        public async Task<IActionResult> AddAuction([FromBody] Auction auction)
+        public async Task<IActionResult> AddAuction([FromBody] AuctionContext auction)
         {
             if (!ModelState.IsValid)
             {

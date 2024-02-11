@@ -12,7 +12,7 @@ namespace Auction_TestTaskCrazyChicken_TestTaskCrazyChicken
         {
         }
 
-        public DbSet<Auction> Auctions { get; set; }
+        public DbSet<AuctionContext> Auctions { get; set; }
         public DbSet<Comment> Comments { get; set; }
     }
 }

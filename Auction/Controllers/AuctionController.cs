@@ -41,8 +41,12 @@ namespace Auction_TestTaskCrazyChicken.Controllers
             {
                 return NotFound();
             }
+            var additionalData = JsonConvert.DeserializeObject<AuctionAdditionalData>(auction.name);
+            if (additionalData == null) return BadRequest();
 
-            return Ok(auction);
+            var auctionForFront = new Auction(auction.id,additionalData.name,auction.description,auction.price,additionalData.createdDate,additionalData.timerCount);
+
+            return Ok(JsonConvert.SerializeObject(auctionForFront));
         }
         [HttpPost("GetId/{id}")]
         public IActionResult GetId (int id)
@@ -54,8 +58,12 @@ namespace Auction_TestTaskCrazyChicken.Controllers
         [HttpPost("Add")]
         public IActionResult AddAuction([FromBody] newAuctionPostModel auction)
         {
-             _auctionRepository.AddAuction(new Auction(auction.name,auction.price, auction.description, auction.img));
-             return Ok(auction);
+            var additionalData = JsonConvert.SerializeObject(new AuctionAdditionalData(auction.name,auction.timerCount, DateTime.Now));
+            var auctionContext = new AuctionContext(additionalData, auction.price, auction.description, auction.img);
+
+            _auctionRepository.AddAuction(auctionContext);
+
+             return Ok();
         }
 
         [HttpGet("getcomments/{id}")]

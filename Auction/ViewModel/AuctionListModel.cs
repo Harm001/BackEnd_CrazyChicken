@@ -5,7 +5,7 @@ namespace Auction_TestTaskCrazyChicken.ViewModel
 {
     public class AuctionListModel
     {
-        public IEnumerable<Auction> Auctions { get; set; }
+        public IEnumerable<AuctionContext> Auctions { get; set; }
         public IEnumerable<Comment> Comments { get; set; }
 
         

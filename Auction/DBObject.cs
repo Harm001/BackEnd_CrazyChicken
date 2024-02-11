@@ -10,16 +10,16 @@ namespace Auction_TestTaskCrazyChicken
         {
             if (!context.Auctions.Any())
             {
-                var auctions = new List<Auction>
+                var auctions = new List<AuctionContext>
                 {
-                    new Auction
+                    new AuctionContext
                     {
                         name = "Test",
                         description = "Bayraktar chinazes",
                         price = 10,
                         img = "/img/Bayraktar.jpg"
                     },
-                    new Auction
+                    new AuctionContext
                     {
                         name = "Test2",
                         description = "Samsa vkesnaia",

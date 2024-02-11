@@ -10,6 +10,6 @@ namespace Auction_TestTaskCrazyChicken.Models
         public string text { get; set; }
         public int AuctionId { get; set; }
         [JsonIgnore]
-        public Auction Auction { get; set; }
+        public AuctionContext Auction { get; set; }
     }
 }
