@@ -15,8 +15,8 @@ var dbName = Environment.GetEnvironmentVariable("DB_NAME");
 var dbPassword = Environment.GetEnvironmentVariable("MSSQL_SA_PASSWORD");
 
 builder.Services.AddDbContext<AppDBContent>(options =>
-                //options.UseSqlServer($"Data Source={dbHost}; Initial Catalog={dbName}; User ID = SA; Password = pass12345#;TrustServerCertificate=true"));
-                options.UseSqlServer($"Server=(localdb)\\MSSQLLocalDB;Database=Auction_TestTaskCrazyChicken;Trusted_Connection=True;MultipleActiveResultSets=true"));
+                options.UseSqlServer($"Data Source={dbHost}; Initial Catalog={dbName}; User ID = SA; Password = pass12345#;TrustServerCertificate=true"));
+                //options.UseSqlServer($"Server=(localdb)\\MSSQLLocalDB;Database=Auction_TestTaskCrazyChicken;Trusted_Connection=True;MultipleActiveResultSets=true"));
 
 builder.Services.AddTransient<IAuction, AuctionRepositiry>();
 builder.Services.AddTransient<IComments, CommentRepository>();
@@ -46,9 +46,7 @@ using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<AppDBContent>();
-    context.Database.Migrate();
     DBObject.Initial(context);
     context.SaveChanges();
 }
-
 app.Run();
