@@ -10,8 +10,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Configuration.AddJsonFile("appsettings.json");
 
+var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
+var dbName = Environment.GetEnvironmentVariable("DB_NAME");
+var dbPassword = Environment.GetEnvironmentVariable("MSSQL_SA_PASSWORD");
+
 builder.Services.AddDbContext<AppDBContent>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer($"Data Source={dbHost}; Initial Catalog={dbName}; User ID = SA; Password = pass12345#;TrustServerCertificate=true"));
 
 builder.Services.AddTransient<IAuction, AuctionRepositiry>();
 builder.Services.AddTransient<IComments, CommentRepository>();

@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Runtime.InteropServices;
 using Auction_TestTaskCrazyChicken.Models;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Auction_TestTaskCrazyChicken_TestTaskCrazyChicken
 {
