@@ -15,14 +15,14 @@ var dbName = Environment.GetEnvironmentVariable("DB_NAME");
 var dbPassword = Environment.GetEnvironmentVariable("MSSQL_SA_PASSWORD");
 
 builder.Services.AddDbContext<AppDBContent>(options =>
-                options.UseSqlServer($"Data Source={dbHost}; Initial Catalog={dbName}; User ID = SA; Password = pass12345#;TrustServerCertificate=true"));
-                //options.UseSqlServer($"Server=(localdb)\\MSSQLLocalDB;Database=Auction_TestTaskCrazyChicken;Trusted_Connection=True;MultipleActiveResultSets=true"));
+                //options.UseSqlServer($"Data Source={dbHost}; Initial Catalog={dbName}; User ID = SA; Password = pass12345#;TrustServerCertificate=true"));
+                options.UseSqlServer($"Server=(localdb)\\MSSQLLocalDB;Database=Auction_TestTaskCrazyChicken;Trusted_Connection=True;MultipleActiveResultSets=true"));
 
 builder.Services.AddTransient<IAuction, AuctionRepositiry>();
 builder.Services.AddTransient<IComments, CommentRepository>();
+builder.WebHost.UseUrls("http://*:80");
 
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -34,9 +34,11 @@ if (app.Environment.IsDevelopment())
 app.UseStaticFiles();
 
 app.UseRouting();
-
 app.UseAuthorization();
-
+app.UseCors(options =>
+{
+    options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+});
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Auction}/{id}");
@@ -45,6 +47,7 @@ using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<AppDBContent>();
+    context.Database.Migrate();
     DBObject.Initial(context);
     context.SaveChanges();
 }
