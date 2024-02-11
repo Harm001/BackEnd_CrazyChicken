@@ -30,7 +30,6 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddTransient<IAuction, AuctionRepositiry>();
 builder.Services.AddTransient<IComments, CommentRepository>();
-builder.WebHost.UseUrls("http://*:80");
 
 var app = builder.Build();
 // Configure the HTTP request pipeline.
