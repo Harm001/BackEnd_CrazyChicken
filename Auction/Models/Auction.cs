@@ -2,7 +2,7 @@
 {
     public class Auction
     {
-        public Auction(int idLot, string name, string description, int lastBid, DateTime startDate, int timerCount, string img)
+        public Auction(int idLot, string name, string description, int lastBid, DateTime startDate, int timerCount, string img, List<Comment> comments)
         {
             this.id = idLot;
             this.name = name;
@@ -11,6 +11,7 @@
             this.startDate = startDate;
             this.timerCount = timerCount;
             this.img = img;
+            this.comments = comments;
         }
 
         /*
@@ -29,7 +30,7 @@ let lastBid = items?.price;
         public DateTime startDate { get; set; }
         public int timerCount { get; set; }
         public string img { get; set; }
-
+        public List<Comment> comments { get; set; }
 
     }
 }
