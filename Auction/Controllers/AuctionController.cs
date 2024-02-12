@@ -60,7 +60,7 @@ namespace Auction_TestTaskCrazyChicken.Controllers
 
                 var auctionForFront = new Auction(auction.id, additionalData.name, auction.description, auction.price, additionalData.createdDate, additionalData.timerCount, auction.img);
 
-                return Ok(JsonConvert.SerializeObject(auctionForFront));
+                return Ok(auctionForFront);
             }
             catch(Exception e)
             {
